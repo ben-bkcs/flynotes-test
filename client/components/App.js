@@ -13,6 +13,7 @@ export const App = () => {
                 <h1>Welcome to friendzy!</h1>
                 <SearchForm setSearchResults={setSearchResults} setIsLoading={setIsLoading} />
                 <h3>{searchResults.length > 0 ? 'Here are your search results 🎉' : ''}</h3>
+                <p>{isLoading ? 'Getting search results...' : ''}</p>
                 <small>{searchResults.length > 0 ? 'Click an item to view your friends details' : ''}</small>
                 <SearchResultsList searchResults={searchResults} listItemClickHandler={setSelectedFriendId}/>
                 <SelectedFriendDrawer
