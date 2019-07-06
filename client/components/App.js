@@ -5,7 +5,7 @@ import SelectedFriendDrawer from './SelectedFriendDrawer';
 
 export const App = () => {
     const [searchResults, setSearchResults] = useState([]);
-    const [selectedFriend, setSelectedFriend] = useState();
+    const [selectedFriendId, setSelectedFriendId] = useState();
     const [isLoading, setIsLoading] = useState(false);
     return (
         <React.Fragment>
@@ -14,11 +14,11 @@ export const App = () => {
                 <SearchForm setSearchResults={setSearchResults} setIsLoading={setIsLoading} />
                 <h3>{searchResults.length > 0 ? 'Here are your search results 🎉' : ''}</h3>
                 <small>{searchResults.length > 0 ? 'Click an item to view your friends details' : ''}</small>
-                <SearchResultsList searchResults={searchResults} listItemClickHandler={setSelectedFriend}/>
+                <SearchResultsList searchResults={searchResults} listItemClickHandler={setSelectedFriendId}/>
                 <SelectedFriendDrawer
-                    selectedFriend={selectedFriend}
-                    isOpen={!!selectedFriend}
-                    closeHandler={() => setSelectedFriend()}
+                    selectedFriendId={selectedFriendId}
+                    isOpen={!!selectedFriendId}
+                    closeHandler={() => setSelectedFriendId()}
                 />
             </div>
         </React.Fragment>
