@@ -1,10 +1,11 @@
-let express = require('express');
-let logger = require('morgan');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
-let index = require('./app/routes/index');
-let api = require('./app/routes/api');
-let app = express();
+const express = require('express');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const path = require('path');
+const index = require('./app/routes/index');
+const api = require('./app/routes/api');
+const app = express();
 
 // Use the things!
 app.use(logger('dev'));
@@ -12,13 +13,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// resolve assets in build folder
+const clientPath = path.join(__dirname, "build");
+app.use(express.static(clientPath));
+
 // Routes
 app.use('/api', api);
 app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  let err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
