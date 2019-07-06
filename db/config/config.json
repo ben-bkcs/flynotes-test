@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "api_freindzy_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "username": "postgres"
+  },
+  "test": {
+    "database": "api_friendzy_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "username": "postgres"
+  },
+  "production": {
+    "db_env_var": "DB_HOST"
+  }
+}
