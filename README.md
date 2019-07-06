@@ -1,5 +1,17 @@
 # API Friendzy
 
+## Test completion
+I finished the test in just under 3 hours (see git log/cpmmit history for exact timings).
+
+Whilst I feel i have completed each of the challenges, here is what I would have done if I had more time:
+- Set up front end unit tests using Jest and Enzyme, maybe also some functional tests using Cypress.io
+- Implemented SASS (.scss) instead of css to enable use of more advanced features such as splitting css into seperate files/modules
+- implemented TypeScript, especially on the API layer
+- Put together a proper build toolchain to enable things like a dev server. hot reloading, etc. To enhance developer experience when making front end changes
+- Moved the application folders around to make the split between client and server more obvious as this could get confusing for more juniour developers
+- put some more thought into the layout of the selected friend drawer, this looks a bit sparse on wider viewports
+
+
 ## Table of Contents
 
 - [Background](#background)
@@ -23,11 +35,11 @@ To get started, assuming node and postgres are installed, run the following comm
 ```
   npm install
 ```
-2. Migrate the development DB (setting username in `./db/config/config.json` and password by settings `PG_DB_PASSWORD` environment variable if needs be)
+2. Migrate the development DB (setting username in `./db/config/config.json` and password by setting `PG_DB_PASSWORD` environment variable if needs be)
 ```
   NODE_ENV=development ./node_modules/.bin/sequelize db:create && NODE_ENV=development ./node_modules/.bin/sequelize db:migrate
 ```
-3. Migrate the test DB (setting username in `./db/config/config.json`and password by settings `PG_DB_PASSWORD` environment variable if needs be)
+3. Migrate the test DB (setting username in `./db/config/config.json`and password by setting `PG_DB_PASSWORD` environment variable if needs be)
 ```
   NODE_ENV=test ./node_modules/.bin/sequelize db:create && NODE_ENV=test ./node_modules/.bin/sequelize db:migrate
 ```
@@ -43,22 +55,34 @@ To get started, assuming node and postgres are installed, run the following comm
 ```
   npm run lint
 ```
+6. Build the front end
+```
+npm run client:build
+```
 7. Run the web app
 ```
-  npm start
+  npm run start:server
 ```
 8. Visit [`http://localhost:3000`](http://localhost:3000)
 
 ## Usage
 
 **Running the app**
-
-1. Run the web app
+1. Build the front end
 ```
-  npm start
+npm run client:buid
+
+#OR for development
+
+npm run client:build:watch
 ```
 
-2. Wait for the app to boot then hit the app URL [`http://localhost:3000`](http://localhost:3000)
+2. Run the web app
+```
+  npm run start:server
+```
+
+3. Wait for the app to boot then hit the app URL [`http://localhost:3000`](http://localhost:3000)
 
 **Linting**
 
